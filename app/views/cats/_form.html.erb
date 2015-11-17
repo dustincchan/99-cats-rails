@@ -1,12 +1,13 @@
-+<% action_url = cat.persisted? ? cat_url(cat) : cats_url %>
-+<% form_method = cat.persisted? ? "PATCH" : "POST" %>
-+<% submit_text = cat.persisted? ? "Update Cat!" : "Create Cat!" %>
+<% action_url = cat.persisted? ? cat_url(cat) : cats_url %>
+<% form_method = cat.persisted? ? "PATCH" : "POST" %>
+<% submit_text = cat.persisted? ? "Update Cat!" : "Create Cat!" %>
 
 <form action = '<%= action_url %>' method = 'post'>
-  <input name='_method' type='hidden' value='patch'>
+  <input name='_method' type='hidden' value='<%= form_method %>'>
   <label>Name:
     <input type='text' name='cat[name]' value='<%= @cat.name %>'>
-  </label><br>
+  </label>
+  <br>
   <label> Sex:
     <% if @cat.sex == 'M' %>
       <input type="radio" name="cat[sex]" value="M" checked="checked"> M
@@ -15,7 +16,8 @@
       <input type="radio" name="cat[sex]" value="M"> M
       <input type="radio" name="cat[sex]" value="F" checked="checked"> F
     <% end %>
-  </label><br>
+  </label>
+  <br>
   <label> Color:
     <select name="cat[color]">
       <option value='<%= @cat.color %>'><%= @cat.color %></option>
@@ -23,7 +25,8 @@
       <option value="<%= color %>"><%= color %></option>
       <% end %>
     </select>
-  </label><br>
+  </label>
+  <br>
   <label> Birthdate:
     <input type="date" name="cat[birth_date]" value='<%= @cat.birth_date %>'>
   </label><br>
@@ -31,6 +34,6 @@
     <input type="text area" name="cat[description]" value='<%= @cat.description %>'>
   </label>
   <label><br>
-    <input type="submit" value = "Edit Cat">
+    <input type="submit" value = "<%= submit_text %>">
   </label>
 </form>
