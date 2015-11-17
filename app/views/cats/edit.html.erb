@@ -1,28 +1,2 @@
 <h1>Edit Cat</h1>
-<form action = '<%= cats_url %>' method = 'post'>
-  <input type='hidden' value='patch'>
-  <label>Name:
-    <input type='text' name='cat[name]'>
-  </label><br>
-  <label> Sex:
-    <input type="radio" name="cat[sex]" value="M" checked> M
-    <input type="radio" name="cat[sex]" value="F"> F
-  </label><br>
-  <label> Color:
-    <select name="cat[color]">
-      <option value=""></option>
-      <% Cat::COLORS.each do |color| %>
-      <option value="<%= color %>"><%= color %></option>
-      <% end %>
-    </select>
-  </label><br>
-  <label> Birthdate:
-    <input type="date" name="cat[birth_date]">
-  </label><br>
-  <label> Description:
-    <input type="text area" name="cat[description]"
-  </label>
-  <label><br>
-    <input type="submit" value = "Edit Cat">
-  </label>
-</form>
+<%= render 'form', cat: @cat %>
