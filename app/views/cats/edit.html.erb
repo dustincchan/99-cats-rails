@@ -1,5 +1,6 @@
-<h1>Create Cat</h1>
+<h1>Edit Cat</h1>
 <form action = '<%= cats_url %>' method = 'post'>
+  <input type='hidden' value='patch'>
   <label>Name:
     <input type='text' name='cat[name]'>
   </label><br>
@@ -21,7 +22,7 @@
   <label> Description:
     <input type="text area" name="cat[description]"
   </label>
-  <label><br> 
-    <input type="submit" value = "Create Cat">
+  <label><br>
+    <input type="submit" value = "Edit Cat">
   </label>
 </form>
