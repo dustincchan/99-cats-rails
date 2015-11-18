@@ -2,7 +2,7 @@ class CatRentalRequest < ActiveRecord::Base
   STATUSES = %w(PENDING APPROVED DENIED)
   validates :cat_id, :start_date, :end_date, presence: true
   validates :status, inclusion: { in: STATUSES }
-  validate overlapping_approved_requests
+  validate :overlapping_approved_requests
 
   belongs_to :cat,
     foreign_key: :cat_id,
