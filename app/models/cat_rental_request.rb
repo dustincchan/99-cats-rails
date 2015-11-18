@@ -20,7 +20,7 @@ class CatRentalRequest < ActiveRecord::Base
   end
 
   def overlapping_approved_requests
-    if overlapping_requests.where("status = 'APPROVED'")
+    unless overlapping_requests.where("status = 'APPROVED'").empty?
       errors[:requests] << "cannot overlap requests"
     end
   end
